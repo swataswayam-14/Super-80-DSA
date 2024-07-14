@@ -15,7 +15,7 @@ public class KadanesAlgo {
         }
         return max;
     }
-    public static int maxSubarraySumOptimal(int [] arr , int n) {
+    public static int maxSubarraySumOptimal(int [] arr , int n) {//O(n square) : TC and O(1) is SC
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
             int sum = 0;
@@ -26,19 +26,34 @@ public class KadanesAlgo {
         }
         return max;
     }
-    public static long maxSubarraySumMostOptimal(int[] arr, int n) {
+    public static long maxSubarraySumMostOptimal(int[] arr, int n) { //O(n) : TC and O(1) is SC
         long max = Long.MIN_VALUE;
         long sum = 0;
+        int start = -1;
+        int ansStart = -1;
+        int ansEnd = -1;
 
         for (int i = 0; i < n; i++) {
+            if(sum == 0) {
+                start = i;
+            }
             sum += arr[i];
             if(sum > max) {
                 max = sum;
+                ansStart = start;
+                ansEnd = i;
             }
             if(sum < 0){
                 sum = 0;
             }
         }
+        System.out.print("The subarray whose sum is maximum is: ");
+        for (int i = ansStart; i <= ansEnd; i++) {
+            if(ansStart != -1 && ansEnd != -1) {
+                System.out.print(arr[i]+" ");
+            }
+        }
+        System.out.println();
         return max;
     }
     public static void main(String[] args) {
