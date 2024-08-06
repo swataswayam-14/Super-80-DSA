@@ -34,6 +34,18 @@ public class SelectionSort {
             }
         }
     }
+    public static void insertion_sort(int arr[]) { // O(n^2): worst case and average case , O(n) : best case, puts the element in their correct place
+        int n = arr.length;
+        for (int i = 0; i <= n-1; i++) {
+            int j = i;
+            while (j > 0 && arr[j-1] > arr[j]) {
+                int temp = arr[j-1];
+                arr[j-1] = arr[j];
+                arr[j] = temp;
+                j--;
+            }
+        }
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,34,12,78,32,67,2,1,89,56,44,22};
         for (int i = 0; i < arr.length; i++) {
@@ -42,7 +54,8 @@ public class SelectionSort {
         System.out.println();
         System.out.println("After sorting");
         //selection_sort(arr);
-        bubble_sort(arr);
+        //bubble_sort(arr);
+        insertion_sort(arr);
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]+" ");
         }
