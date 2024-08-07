@@ -2,7 +2,7 @@
 package sorting_i;
 import java.util.*;
 
-public class SelectionSort {
+public class BasicSorting {
     public static void selection_sort(int arr[]) { // O(n^2) brings the minimum element to the first of the array
         int n = arr.length;
         for (int i = 0; i <= n-2; i++) {
