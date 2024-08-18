@@ -1,5 +1,7 @@
 package Arrays_DSA_Questions.Medium;
 
+import java.util.ArrayList;
+
 public class MaximumSubArray {
     public static void main(String[] args) {
         int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4};
@@ -9,6 +11,7 @@ public class MaximumSubArray {
         System.out.println("The maximum subarray sum is: " + maxSum1);
         System.out.println("The maximum subarray sum is: " + maxSum2);
         System.out.println("The maximum subarray sum is: " + maxSum3);
+        System.out.println("The subarray having the maximum sum is: "+printSubArrayWithMaxSum(arr));
     }
     static int maxSubArraySumBrute(int arr[]) { // T.C is O(n^3) and S.C is O(1)
 
@@ -53,5 +56,22 @@ public class MaximumSubArray {
             }
         }
         return maxSum;
+    }
+    static ArrayList<Integer> printSubArrayWithMaxSum(int arr[]) {
+        ArrayList<Integer> maxSubArray = new ArrayList<>();
+        int n = arr.length;
+        int maxSum = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            if(sum < 0) {
+                maxSubArray.clear();
+                sum = 0;
+            } else if (sum > 0) {
+                maxSum = Math.max(maxSum, sum);
+                maxSubArray.add(arr[i]);
+            }
+        }
+        return maxSubArray;
     }
 }
