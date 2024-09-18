@@ -1,5 +1,7 @@
 package MIDSEM;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -69,5 +71,58 @@ public class ProgramI {
         int lotteryNum = random.nextInt(50) + 1; //1-50
         System.out.println("The lottery number is "+lotteryNum);
         return lotteryNum;
+    }
+
+
+    //Question paper - 2
+    static void swap(int a , int b) {
+        System.out.println("The first number is "+a+" The second number is "+b);
+        a = a+b;
+        a = a-b;
+        b = a-b;
+        System.out.println("The first number is "+a+" The second number is "+b);
+    }
+    static void calculator() {
+        Scanner sc = new Scanner(System.in);
+        double num1 = sc.nextDouble();
+        double num2 = sc.nextDouble();
+        char operator = sc.next().charAt(0);
+        double result = 0;
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '%':
+                result = num1 % num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            default:
+                System.out.println("Operator not permitted");
+                break;
+        }
+        System.out.println("The result of "+operator+" operation is "+result);
+    }
+    //program to check palindrome
+    static boolean checkPalindrome() {
+        Scanner sc = new Scanner(System.in);
+        String original = sc.nextLine();
+        String reversed = new StringBuilder(original).reverse().toString();
+        if (original.equals(reversed)) {
+            return true;
+        }
+        return false;
+    }
+    static void displayCurrentTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss a");
+        Date date = new Date();
+        System.out.println("Current time: "+formatter.format(date));
     }
 }
