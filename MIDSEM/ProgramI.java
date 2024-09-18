@@ -53,6 +53,7 @@ public class ProgramI {
         do {
             System.out.print("Enter number: ");
             int num = sc.nextInt();
+            sc.close();
             if (num >= 10 && num <= 50) {
                 done = true;
                 System.out.println("Number is within range");
@@ -88,6 +89,7 @@ public class ProgramI {
         double num2 = sc.nextDouble();
         char operator = sc.next().charAt(0);
         double result = 0;
+        sc.close();
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -115,6 +117,7 @@ public class ProgramI {
         Scanner sc = new Scanner(System.in);
         String original = sc.nextLine();
         String reversed = new StringBuilder(original).reverse().toString();
+        sc.close();
         if (original.equals(reversed)) {
             return true;
         }
@@ -124,5 +127,87 @@ public class ProgramI {
         SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss a");
         Date date = new Date();
         System.out.println("Current time: "+formatter.format(date));
+    }
+
+    //Question paper - 3
+    static void bmiCalculator() {
+        System.out.println("Enter height: ");
+        Scanner sc = new Scanner(System.in);
+        double height = sc.nextDouble();
+        System.out.println("Enter weight: ");
+        double weight = sc.nextDouble();
+        double bmi = weight / (height * height);
+        if (bmi < 18.5) {
+            System.out.println("Underweight");
+        } else if (bmi < 24.9) {
+            System.out.println("Normal");
+        } else if (bmi < 29.9) {
+            System.out.println("Overweight");
+        } else {
+            System.out.println("Obese");
+        }
+        sc.close();
+    }
+    //program to find the day of the week
+    static void dayOfWeek() {
+        System.out.println("Enter a number b/w (1-7)");
+        Scanner sc = new Scanner(System.in);
+        int date = sc.nextInt();
+        sc.close();
+        switch (date) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+                
+            case 5:
+                System.out.println("Friday");
+                break;
+            case 6:
+                System.out.println("Saturday");
+                break;
+            case 7:
+                System.out.println("Sunday");
+                break;
+            default:
+                System.out.println("Not a valid number");
+                break;
+        }
+    }
+    static void guessingGame() {
+        Random random = new Random();
+        Scanner sc = new Scanner(System.in);
+        int randomNumber = random.nextInt(100) + 1; // 1-100
+        boolean found = false;
+        do {
+            System.out.print("Enter a number between 1 - 100: ");
+            int guess = sc.nextInt();
+            if (guess == randomNumber) {
+                System.out.println("You got the number");
+                found = true;
+            } else if (guess < randomNumber) {
+                System.out.println("Your guess is smaller");
+            } else {
+                System.out.println("Your guess is larger");
+            }
+
+        } while (!found);
+        sc.close();
+    }
+    //word count and character count
+    static void countWordsAndCharacter(String sentence){
+        String[] words = sentence.split(" ");
+        int wordCount = words.length;
+        int charCount = sentence.replace(" ", "").length();
+        System.out.println("Words: "+wordCount);
+        System.out.println("Chars: "+charCount);
     }
 }
