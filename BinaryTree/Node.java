@@ -1,7 +1,9 @@
 package BinaryTree;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class Node {
     Node left;
@@ -28,6 +30,9 @@ public class Node {
         List<Integer> postOrderTraversalArr = new ArrayList<>();
         postOrderTraversal(postOrderTraversalArr, root);
         System.out.println(postOrderTraversalArr);
+        List<Integer> levelOrderTraversalArr = new ArrayList<>();
+        levelOrderTraversal(levelOrderTraversalArr, root);
+        System.out.println(levelOrderTraversalArr);
     }
     public static void preOrderTraversal(List<Integer> arr, Node root) {
         if (root == null) {
@@ -52,5 +57,25 @@ public class Node {
         postOrderTraversal(arr, root.left);
         postOrderTraversal(arr, root.right);
         arr.add(root.data);
+    }
+    public static void levelOrderTraversal(List<Integer> arr, Node root) {
+        if (root == null) {
+            return;
+        }
+        Queue<Node> q = new ArrayDeque<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node el = q.remove();
+                if (el.left != null) {
+                    q.add(el.left);
+                }
+                if (el.right != null) {
+                    q.add(el.right);
+                }
+                arr.add(el.data);
+            }
+        }
     }
 }
