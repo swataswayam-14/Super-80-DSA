@@ -22,6 +22,12 @@ public class Node {
         List<Integer> preOrderTraversalArr = new ArrayList<>();
         preOrderTraversal(preOrderTraversalArr, root);
         System.out.println(preOrderTraversalArr);
+        List<Integer> inOrderTraversalArr = new ArrayList<>();
+        inorderTraversal(inOrderTraversalArr, root);
+        System.out.println(inOrderTraversalArr);
+        List<Integer> postOrderTraversalArr = new ArrayList<>();
+        postOrderTraversal(postOrderTraversalArr, root);
+        System.out.println(postOrderTraversalArr);
     }
     public static void preOrderTraversal(List<Integer> arr, Node root) {
         if (root == null) {
@@ -30,5 +36,21 @@ public class Node {
         arr.add(root.data);
         preOrderTraversal(arr, root.left);
         preOrderTraversal(arr, root.right);
+    }
+    public static void inorderTraversal(List<Integer> arr, Node root) {
+        if (root == null) {
+            return;
+        }
+        inorderTraversal(arr, root.left);
+        arr.add(root.data);
+        inorderTraversal(arr, root.right);
+    }
+    public static void postOrderTraversal(List<Integer> arr, Node root) {
+        if (root == null) {
+            return;
+        }
+        postOrderTraversal(arr, root.left);
+        postOrderTraversal(arr, root.right);
+        arr.add(root.data);
     }
 }
