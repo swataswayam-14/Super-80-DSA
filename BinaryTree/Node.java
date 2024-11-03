@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Node {
     Node left;
@@ -33,6 +34,11 @@ public class Node {
         List<Integer> levelOrderTraversalArr = new ArrayList<>();
         levelOrderTraversal(levelOrderTraversalArr, root);
         System.out.println(levelOrderTraversalArr);
+        List<Integer> preOrderTraversalArrIterative = new ArrayList<>();
+        iterativePreOrderTraversal(root, preOrderTraversalArrIterative);
+        System.out.println(preOrderTraversalArrIterative);
+        iterativeInorderTraversal(root);
+        iterativePostOrderTraversal(root);
     }
     public static void preOrderTraversal(List<Integer> arr, Node root) {
         if (root == null) {
@@ -78,4 +84,66 @@ public class Node {
             }
         }
     }
+    public static void iterativePreOrderTraversal(Node root, List<Integer> lst) {
+        if (root == null) {
+            return;
+        }
+    
+        Stack<Node> st = new Stack<>();
+        st.push(root);
+    
+        while (!st.isEmpty()) {
+            root = st.pop();
+            lst.add(root.data);  
+    
+            if (root.right != null) {
+                st.push(root.right);
+            }
+            if (root.left != null) {
+                st.push(root.left);
+            }
+        }
+    }
+    
+    public static void iterativeInorderTraversal(Node root) {
+        Stack<Node> stack = new Stack<>();
+        Node current = root;
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+
+            current = stack.pop();
+            System.out.print(current.data + " "); 
+            current = current.right;
+        }
+    }
+    public static void iterativePostOrderTraversal(Node root) {
+        if (root == null) {
+            return;
+        }
+    
+        Stack<Node> stack1 = new Stack<>();
+        Stack<Node> stack2 = new Stack<>();
+        
+        stack1.push(root);
+    
+        while (!stack1.isEmpty()) {
+            Node node = stack1.pop();
+            stack2.push(node);
+    
+            if (node.left != null) {
+                stack1.push(node.left);
+            }
+            if (node.right != null) {
+                stack1.push(node.right);
+            }
+        }
+        while (!stack2.isEmpty()) {
+            System.out.print(stack2.pop().data + " ");
+        }
+    }
+    
 }
