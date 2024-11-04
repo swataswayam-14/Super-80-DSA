@@ -38,7 +38,8 @@ public class Node {
         iterativePreOrderTraversal(root, preOrderTraversalArrIterative);
         System.out.println(preOrderTraversalArrIterative);
         iterativeInorderTraversal(root);
-        iterativePostOrderTraversal(root);
+        iterativePostOrderTraversalUsing2Stack(root);
+        System.out.println(iterativeInorderTraversal2(root));
     }
     public static void preOrderTraversal(List<Integer> arr, Node root) {
         if (root == null) {
@@ -120,7 +121,26 @@ public class Node {
             current = current.right;
         }
     }
-    public static void iterativePostOrderTraversal(Node root) {
+    public static List<Integer> iterativeInorderTraversal2(Node root) {
+        Stack<Node> st = new Stack<>();
+        List<Integer> inorder = new ArrayList<>();
+        Node currentNode = root;
+        while (true) {
+            if (currentNode != null) {
+                st.push(currentNode);
+                currentNode = currentNode.left;
+            }else {
+                if (st.isEmpty()) {
+                    break;
+                }
+                currentNode = st.pop();
+                inorder.add(currentNode.data);
+                currentNode = currentNode.right;
+            }
+        }
+        return inorder;
+    }
+    public static void iterativePostOrderTraversalUsing2Stack(Node root) {
         if (root == null) {
             return;
         }
