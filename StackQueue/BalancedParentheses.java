@@ -17,6 +17,7 @@ public class BalancedParentheses {
         String inputStr = sc.nextLine().replace(" ", ""); 
 
         String[] strArray = inputStr.split(",");
+        boolean isValidString = isValid(inputStr);
 
         for (String brace : strArray) {
             if (matchingBraces.containsValue(brace)) {
@@ -34,7 +35,32 @@ public class BalancedParentheses {
         } else {
             System.out.println("The input string is NOT a valid parentheses sequence.");
         }
+        if (isValidString){
+            System.out.println("The input string is a VALID parentheses sequence.");
+        } else {
+            System.out.println("The input string is NOT a valid parentheses sequence.");
+        }
 
         sc.close();
+    }
+    public static boolean isValid(String s) {
+        java.util.Stack<Character> st = new java.util.Stack<>();
+        String[] elements = s.replace(" ", "").split(",");
+        for (String it : elements) {
+            char ch = it.charAt(0); 
+            if (ch == '(' || ch == '{' || ch == '[') {
+                st.push(ch);
+            }
+            else {
+                if (st.isEmpty()) return false; 
+                char top = st.pop();
+                if (!((ch == ')' && top == '(') || 
+                      (ch == '}' && top == '{') || 
+                      (ch == ']' && top == '['))) {
+                    return false; 
+                }
+            }
+        }
+        return st.isEmpty();
     }
 }
