@@ -22,4 +22,23 @@ public class RootToNode {
         arr.remove(arr.size() - 1);
         return false;
     }
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        
+        RootToNode finder = new RootToNode();
+        ArrayList<Integer> path = new ArrayList<>();
+        int target = 5;
+        
+        if (finder.getPath(root, path, target)) {
+            System.out.println("Path to node " + target + ": " + path);
+        } else {
+            System.out.println("Node " + target + " not found in the tree.");
+        }
+    }
 }
