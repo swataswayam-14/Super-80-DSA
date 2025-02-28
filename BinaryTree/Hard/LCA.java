@@ -37,5 +37,16 @@ public class LCA {
         int n1 = 4, n2 = 5;
         int lca = findLCA(root, n1, n2);
         System.out.println("Lowest Common Ancestor of " + n1 + " and " + n2 + " is: " + lca);
+        Node lcaOptimal = findLCAOptimal(root, n1, n2);
+        System.out.println("Lowest Common Ancestor of " + n1 + " and " + n2 + " is: " + lcaOptimal.val);
+    }
+
+    public static Node findLCAOptimal(Node root, int n1, int n2) {
+        if (root == null || root.val == n1 || root.val == n2) return root;
+        Node left = findLCAOptimal(root.left, n1, n2);
+        Node right = findLCAOptimal(root.right, n1, n2);
+        if (left == null) return right;
+        else if (right == null) return left;
+        else return root;
     }
 }
