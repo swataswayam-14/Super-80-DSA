@@ -3,6 +3,7 @@ package Tries;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Trie {
     private static class TrieNode {
@@ -177,102 +178,379 @@ public class Trie {
             }
         }
     }
-    public static void main(String[] args) {
-        Trie trie = new Trie(); // Initialize the Trie
+    private static final String RESET = "\u001B[0m";
+    private static final String BLACK = "\u001B[30m";
+    private static final String RED = "\u001B[31m";
+    private static final String GREEN = "\u001B[32m";
+    private static final String YELLOW = "\u001B[33m";
+    private static final String BLUE = "\u001B[34m";
+    private static final String PURPLE = "\u001B[35m";
+    private static final String CYAN = "\u001B[36m";
+    private static final String WHITE = "\u001B[37m";
+    private static final String BOLD = "\u001B[1m";
+    
+
+    private static final int MENU_BOX_WIDTH = 40;
+    private static final int WELCOME_BOX_WIDTH = 40;
+    private static final int GOODBYE_BOX_WIDTH = 40;
+
+    public static void main(String[] args) throws InterruptedException {
+        Trie trie = new Trie(); 
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
-        System.out.println("=====================================");
-        System.out.println("      Welcome to the Trie CLI!       ");
-        System.out.println("=====================================");
-        
+        clearScreen();
+        showWelcomeAnimation();
+
         while (!exit) {
-            System.out.println("\nChoose an option:");
-            System.out.println("1. Insert a word");
-            System.out.println("2. Search for a word");
-            System.out.println("3. Check if a prefix exists");
-            System.out.println("4. Display all words with a prefix");
-            System.out.println("5. Count total words in the Trie");
-            System.out.println("6. Delete a word");
-            System.out.println("7. Clear the Trie");
-            System.out.println("8. Exit");
-            System.out.print("\nEnter your choice: ");
+            displayMenu();
+            System.out.print(BOLD + CYAN + "\nEnter your choice: " + RESET);
+
+            try {
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (choice) {
+                    case 1:
+                        System.out.print(YELLOW + "\nEnter the word to insert: " + RESET);
+                        String wordToInsert = scanner.nextLine().toLowerCase();
+                        trie.insert(wordToInsert);
+                        animateSuccess("Word '" + wordToInsert + "' inserted successfully!");
+                        break;
+
+                    case 2:
+                        System.out.print(YELLOW + "\nEnter the word to search: " + RESET);
+                        String wordToSearch = scanner.nextLine().toLowerCase();
+                        boolean isFound = trie.search(wordToSearch);
+                        if (isFound) {
+                            typeWithColor("Word '" + wordToSearch + "' exists in the Trie.", GREEN);
+                        } else {
+                            typeWithColor("Word '" + wordToSearch + "' does not exist in the Trie.", RED);
+                        }
+                        break;
+
+                    case 3:
+                        System.out.print(YELLOW + "\nEnter the prefix to check: " + RESET);
+                        String prefixToCheck = scanner.nextLine().toLowerCase();
+                        boolean hasPrefix = trie.startsWith(prefixToCheck);
+                        if (hasPrefix) {
+                            typeWithColor("There are words in the Trie that start with '" + prefixToCheck + "'.", GREEN);
+                        } else {
+                            typeWithColor("No words in the Trie start with '" + prefixToCheck + "'.", RED);
+                        }
+                        break;
+
+                    case 4:
+                        System.out.print(YELLOW + "\nEnter the prefix to display words: " + RESET);
+                        String prefixForWords = scanner.nextLine().toLowerCase();
+                        var wordsWithPrefix = trie.getWordsWithPrefix(prefixForWords);
+                        if (!wordsWithPrefix.isEmpty()) {
+                            typeWithColor("Words with prefix '" + prefixForWords + "':", CYAN);
+                            animateList(wordsWithPrefix);
+                        } else {
+                            typeWithColor("No words found with prefix '" + prefixForWords + "'.", RED);
+                        }
+                        break;
+
+                    case 5:
+                        int totalWords = trie.countWords();
+                        System.out.println();
+                        animateCounter(totalWords);
+                        break;
+
+                    case 6:
+                        System.out.print(YELLOW + "\nEnter the word to delete: " + RESET);
+                        String wordToDelete = scanner.nextLine().toLowerCase();
+                        boolean isDeleted = trie.delete(wordToDelete);
+                        if (isDeleted) {
+                            animateDelete(wordToDelete);
+                        } else {
+                            typeWithColor("Word '" + wordToDelete + "' not found in the Trie.", RED);
+                        }
+                        break;
+
+                    case 7:
+                        animateClear();
+                        trie.clear();
+                        break;
+
+                    case 8:
+                        exit = true;
+                        animateExit();
+                        break;
+
+                    default:
+                        System.out.println(RED + "\nInvalid choice! Please try again." + RESET);
+                        TimeUnit.MILLISECONDS.sleep(1000);
+                }
+            } catch (Exception e) {
+                System.out.println(RED + "\nInvalid input! Please enter a number." + RESET);
+                scanner.nextLine(); // Clear the invalid input
+                TimeUnit.MILLISECONDS.sleep(1000);
+            }
             
-            int choice = scanner.nextInt();
-            scanner.nextLine(); 
-            
-            switch (choice) {
-                case 1:
-                    System.out.print("\nEnter the word to insert: ");
-                    String wordToInsert = scanner.nextLine().toLowerCase();
-                    trie.insert(wordToInsert);
-                    System.out.println("Word '" + wordToInsert + "' inserted successfully!");
-                    break;
-                    
-                case 2:
-                    System.out.print("\nEnter the word to search: ");
-                    String wordToSearch = scanner.nextLine().toLowerCase();
-                    boolean isFound = trie.search(wordToSearch);
-                    if (isFound) {
-                        System.out.println("Word '" + wordToSearch + "' exists in the Trie.");
-                    } else {
-                        System.out.println("Word '" + wordToSearch + "' does not exist in the Trie.");
-                    }
-                    break;
-                    
-                case 3:
-                    System.out.print("\nEnter the prefix to check: ");
-                    String prefixToCheck = scanner.nextLine().toLowerCase();
-                    boolean hasPrefix = trie.startsWith(prefixToCheck);
-                    if (hasPrefix) {
-                        System.out.println("There are words in the Trie that start with '" + prefixToCheck + "'.");
-                    } else {
-                        System.out.println("No words in the Trie start with '" + prefixToCheck + "'.");
-                    }
-                    break;
-                    
-                case 4:
-                    System.out.print("\nEnter the prefix to display words: ");
-                    String prefixForWords = scanner.nextLine().toLowerCase();
-                    var wordsWithPrefix = trie.getWordsWithPrefix(prefixForWords);
-                    if (!wordsWithPrefix.isEmpty()) {
-                        System.out.println("Words with prefix '" + prefixForWords + "': " + wordsWithPrefix);
-                    } else {
-                        System.out.println("No words found with prefix '" + prefixForWords + "'.");
-                    }
-                    break;
-                    
-                case 5:
-                    int totalWords = trie.countWords();
-                    System.out.println("\nTotal words in the Trie: " + totalWords);
-                    break;
-                    
-                case 6:
-                    System.out.print("\nEnter the word to delete: ");
-                    String wordToDelete = scanner.nextLine().toLowerCase();
-                    boolean isDeleted = trie.delete(wordToDelete);
-                    if (isDeleted) {
-                        System.out.println("Word '" + wordToDelete + "' deleted successfully!");
-                    } else {
-                        System.out.println("Word '" + wordToDelete + "' not found in the Trie.");
-                    }
-                    break;
-                    
-                case 7:
-                    trie.clear();
-                    System.out.println("\nThe Trie has been cleared!");
-                    break;
-                    
-                case 8:
-                    exit = true;
-                    System.out.println("\nThank you for using the Trie CLI! Goodbye!");
-                    break;
-                    
-                default:
-                    System.out.println("\nInvalid choice! Please try again.");
+            if (!exit) {
+                System.out.print(PURPLE + "\nPress Enter to continue..." + RESET);
+                scanner.nextLine();
+                clearScreen();
             }
         }
 
         scanner.close();
+    }
+
+    private static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+    
+    private static void showWelcomeAnimation() throws InterruptedException {
+        String[] frames = {
+            "T", "TR", "TRI", "TRIE", "TRIE C", "TRIE CL", "TRIE CLI"
+        };
+        
+        for (String frame : frames) {
+            clearScreen();
+            System.out.println();
+            String topBottom = createLine("╔", "═", "╗", WELCOME_BOX_WIDTH);
+            String empty = createLine("║", " ", "║", WELCOME_BOX_WIDTH);
+            
+            System.out.println(BOLD + CYAN + topBottom + RESET);
+            System.out.println(BOLD + CYAN + empty + RESET);
+            
+            String welcome = "Welcome to the";
+            String welcomeLine = createCenteredLine("║", welcome, "║", WELCOME_BOX_WIDTH);
+            System.out.println(BOLD + CYAN + welcomeLine + RESET);
+            
+            String frameLine = createCenteredLine("║", frame, "║", WELCOME_BOX_WIDTH);
+            System.out.println(BOLD + CYAN + "║" + PURPLE + frameLine.substring(1, frameLine.length() - 1) + CYAN + "║" + RESET);
+            
+            System.out.println(BOLD + CYAN + empty + RESET);
+            System.out.println(BOLD + CYAN + createLine("╚", "═", "╝", WELCOME_BOX_WIDTH) + RESET);
+            
+            TimeUnit.MILLISECONDS.sleep(200);
+        }
+        
+        TimeUnit.MILLISECONDS.sleep(1000);
+    }
+    
+    private static String createLine(String start, String middle, String end, int width) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(start);
+        for (int i = 0; i < width - 2; i++) {
+            sb.append(middle);
+        }
+        sb.append(end);
+        return sb.toString();
+    }
+    
+    private static String createCenteredLine(String start, String text, String end, int width) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(start);
+        
+        int textSpace = width - 2;
+        int padding = (textSpace - text.length()) / 2;
+        
+        for (int i = 0; i < padding; i++) {
+            sb.append(" ");
+        }
+        
+        sb.append(text);
+        
+        int remainingSpace = width - 2 - padding - text.length();
+        for (int i = 0; i < remainingSpace; i++) {
+            sb.append(" ");
+        }
+        
+        sb.append(end);
+        return sb.toString();
+    }
+    
+    private static void displayMenu() throws InterruptedException {
+        String[] menuItems = {
+            "Choose an option:",
+            "1. Insert a word",
+            "2. Search for a word",
+            "3. Check if a prefix exists",
+            "4. Display all words with a prefix",
+            "5. Count total words in the Trie",
+            "6. Delete a word",
+            "7. Clear the Trie",
+            "8. Exit"
+        };
+        
+        String topLine = createLine("╔", "═", "╗", MENU_BOX_WIDTH);
+        String middleLine = createLine("╠", "═", "╣", MENU_BOX_WIDTH);
+        String bottomLine = createLine("╚", "═", "╝", MENU_BOX_WIDTH);
+        
+        System.out.println(BOLD + BLUE + "\n" + topLine + RESET);
+        
+        for (int i = 0; i < menuItems.length; i++) {
+            if (i == 0) {
+                String titleLine = createCenteredLine("║", menuItems[i], "║", MENU_BOX_WIDTH);
+                System.out.println(BOLD + BLUE + "║" + BOLD + YELLOW + titleLine.substring(1, titleLine.length() - 1) + BLUE + "║" + RESET);
+                System.out.println(BOLD + BLUE + middleLine + RESET);
+            } else {
+                String coloredText;
+                switch (i) {
+                    case 1: coloredText = GREEN + menuItems[i]; break;
+                    case 2: coloredText = CYAN + menuItems[i]; break;
+                    case 3: coloredText = YELLOW + menuItems[i]; break;
+                    case 4: coloredText = PURPLE + menuItems[i]; break;
+                    case 5: coloredText = GREEN + menuItems[i]; break;
+                    case 6: coloredText = RED + menuItems[i]; break;
+                    case 7: coloredText = YELLOW + menuItems[i]; break;
+                    case 8: coloredText = RED + menuItems[i]; break;
+                    default: coloredText = WHITE + menuItems[i];
+                }
+                
+                StringBuilder menuLine = new StringBuilder();
+                menuLine.append(BOLD + BLUE + "║ " + RESET);
+                menuLine.append(coloredText + RESET);
+                
+                int padding = MENU_BOX_WIDTH - 3 - menuItems[i].length();
+                for (int j = 0; j < padding; j++) {
+                    menuLine.append(" ");
+                }
+                
+                menuLine.append(BOLD + BLUE + "║" + RESET);
+                System.out.println(menuLine);
+            }
+        }
+        
+        System.out.println(BOLD + BLUE + bottomLine + RESET);
+    }
+    
+    private static void typeWithColor(String text, String color) throws InterruptedException {
+        System.out.println();
+        for (char c : text.toCharArray()) {
+            System.out.print(color + c + RESET);
+            TimeUnit.MILLISECONDS.sleep(30);
+        }
+        System.out.println();
+    }
+    
+    private static void animateSuccess(String message) throws InterruptedException {
+        System.out.println();
+        String animation = "✓ ";
+        for (char c : animation.toCharArray()) {
+            System.out.print(BOLD + GREEN + c + RESET);
+            TimeUnit.MILLISECONDS.sleep(300);
+        }
+        
+        for (char c : message.toCharArray()) {
+            System.out.print(GREEN + c + RESET);
+            TimeUnit.MILLISECONDS.sleep(30);
+        }
+        System.out.println();
+    }
+    
+    private static void animateList(Iterable<String> items) throws InterruptedException {
+        int count = 0;
+        for (String item : items) {
+            count++;
+            System.out.print(PURPLE + "  " + count + ". " + RESET);
+            TimeUnit.MILLISECONDS.sleep(300);
+            for (char c : item.toCharArray()) {
+                System.out.print(CYAN + c + RESET);
+                TimeUnit.MILLISECONDS.sleep(20);
+            }
+            System.out.println();
+        }
+    }
+    
+    private static void animateCounter(int count) throws InterruptedException {
+        String message = "Counting words in the Trie: ";
+        typeWithColor(message, YELLOW);
+        
+        for (int i = 0; i <= count; i++) {
+            System.out.print("\r" + BOLD + GREEN + message + i + RESET);
+            if (i < count) {
+                TimeUnit.MILLISECONDS.sleep(1000 / Math.max(1, count));
+            }
+        }
+        System.out.println("\n");
+    }
+    
+    private static void animateDelete(String word) throws InterruptedException {
+        System.out.println();
+        System.out.print(RED + "Deleting: " + RESET);
+        for (char c : word.toCharArray()) {
+            System.out.print(YELLOW + c + RESET);
+            TimeUnit.MILLISECONDS.sleep(50);
+        }
+        
+        TimeUnit.MILLISECONDS.sleep(300);
+        for (int i = 0; i < word.length(); i++) {
+            System.out.print("\b \b");
+            TimeUnit.MILLISECONDS.sleep(50);
+        }
+        
+        typeWithColor("Word '" + word + "' deleted successfully!", GREEN);
+    }
+    
+    private static void animateClear() throws InterruptedException {
+        System.out.println();
+        String message = "Clearing the Trie";
+        System.out.print(YELLOW + message);
+        
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(".");
+                TimeUnit.MILLISECONDS.sleep(300);
+            }
+            System.out.print("\b\b\b   \b\b\b");
+            TimeUnit.MILLISECONDS.sleep(300);
+        }
+        
+        typeWithColor("\nThe Trie has been cleared!", GREEN);
+    }
+    
+    private static void animateExit() throws InterruptedException {
+        clearScreen();
+        String[] frames = {
+            "Thank you for using the Trie CLI!",
+            "Thank you for using the Trie CLI! G",
+            "Thank you for using the Trie CLI! Go",
+            "Thank you for using the Trie CLI! Goo",
+            "Thank you for using the Trie CLI! Good",
+            "Thank you for using the Trie CLI! Goodb",
+            "Thank you for using the Trie CLI! Goodbye",
+            "Thank you for using the Trie CLI! Goodbye!",
+        };
+        
+        for (String frame : frames) {
+            clearScreen();
+            System.out.println();
+            
+            String topBottom = createLine("╔", "═", "╗", GOODBYE_BOX_WIDTH);
+            String empty = createLine("║", " ", "║", GOODBYE_BOX_WIDTH);
+            
+            System.out.println(BOLD + CYAN + topBottom + RESET);
+            System.out.println(BOLD + CYAN + empty + RESET);
+            
+
+            if (frame.length() > GOODBYE_BOX_WIDTH - 4) {
+                int splitPoint = Math.min(GOODBYE_BOX_WIDTH - 4, frame.lastIndexOf(" ", GOODBYE_BOX_WIDTH - 4));
+                String line1 = frame.substring(0, splitPoint);
+                String line2 = frame.substring(splitPoint + 1);
+                
+                String line1Text = createCenteredLine("║", line1, "║", GOODBYE_BOX_WIDTH);
+                System.out.println(BOLD + CYAN + "║" + PURPLE + line1Text.substring(1, line1Text.length() - 1) + CYAN + "║" + RESET);
+                
+                String line2Text = createCenteredLine("║", line2, "║", GOODBYE_BOX_WIDTH);
+                System.out.println(BOLD + CYAN + "║" + PURPLE + line2Text.substring(1, line2Text.length() - 1) + CYAN + "║" + RESET);
+            } else {
+                String frameLine = createCenteredLine("║", frame, "║", GOODBYE_BOX_WIDTH);
+                System.out.println(BOLD + CYAN + "║" + PURPLE + frameLine.substring(1, frameLine.length() - 1) + CYAN + "║" + RESET);
+            }
+            
+            System.out.println(BOLD + CYAN + empty + RESET);
+            System.out.println(BOLD + CYAN + createLine("╚", "═", "╝", GOODBYE_BOX_WIDTH) + RESET);
+            
+            TimeUnit.MILLISECONDS.sleep(200);
+        }
+        
+        TimeUnit.MILLISECONDS.sleep(1000);
     }
 }
