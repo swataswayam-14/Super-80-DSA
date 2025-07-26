@@ -1,7 +1,7 @@
 # ✅ 40 Essential DSA Interview Questions in Java - Checklist
 
 ## Arrays & Strings (8 Questions)
-- [ ] 1. Two Sum
+- [✅] 1. Two Sum
 - [ ] 2. Best Time to Buy and Sell Stock
 - [ ] 3. Contains Duplicate
 - [ ] 4. Valid Anagram
