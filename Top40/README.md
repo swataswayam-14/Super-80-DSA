@@ -4,7 +4,7 @@
 - [✅] 1. Two Sum
 - [✅] 2. Best Time to Buy and Sell Stock
 - [ ] 3. Contains Duplicate
-- [ ] 4. Valid Anagram
+- [✅] 4. Valid Anagram
 - [✅] 5. Group Anagrams
 - [ ] 6. Valid Parentheses
 - [✅] 7. Longest Substring Without Repeating Characters
