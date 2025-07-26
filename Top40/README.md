@@ -11,7 +11,7 @@
 - [✅] 8. 3Sum
 
 ## Linked Lists (5 Questions)
-- [ ] 9. Reverse Linked List
+- [✅] 9. Reverse Linked List
 - [ ] 10. Merge Two Sorted Lists
 - [ ] 11. Linked List Cycle
 - [ ] 12. Remove Nth Node From End
@@ -44,7 +44,7 @@
 
 ## Heap & Priority Queue (2 Questions)
 - [✅] 33. Kth Largest Element in Array
-- [ ] 34. Merge k Sorted Lists
+- [✅] 34. Merge k Sorted Lists
 
 ## Two Pointers & Sliding Window (3 Questions)
 - [✅] 35. Container With Most Water
