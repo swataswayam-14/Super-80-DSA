@@ -5,10 +5,10 @@
 - [ ] 2. Best Time to Buy and Sell Stock
 - [ ] 3. Contains Duplicate
 - [ ] 4. Valid Anagram
-- [ ] 5. Group Anagrams
+- [✅] 5. Group Anagrams
 - [ ] 6. Valid Parentheses
-- [ ] 7. Longest Substring Without Repeating Characters
-- [ ] 8. 3Sum
+- [✅] 7. Longest Substring Without Repeating Characters
+- [✅] 8. 3Sum
 
 ## Linked Lists (5 Questions)
 - [ ] 9. Reverse Linked List
@@ -28,9 +28,9 @@
 - [ ] 21. Construct Binary Tree from Preorder and Inorder
 
 ## Dynamic Programming (6 Questions)
-- [ ] 22. Climbing Stairs
-- [ ] 23. House Robber
-- [ ] 24. Coin Change
+- [✅] 22. Climbing Stairs
+- [✅] 23. House Robber
+- [✅] 24. Coin Change
 - [ ] 25. Longest Increasing Subsequence
 - [ ] 26. Word Break
 - [ ] 27. Unique Paths
@@ -43,11 +43,11 @@
 - [ ] 32. Graph Valid Tree
 
 ## Heap & Priority Queue (2 Questions)
-- [ ] 33. Kth Largest Element in Array
+- [✅] 33. Kth Largest Element in Array
 - [ ] 34. Merge k Sorted Lists
 
 ## Two Pointers & Sliding Window (3 Questions)
-- [ ] 35. Container With Most Water
+- [✅] 35. Container With Most Water
 - [ ] 36. Minimum Window Substring
 - [ ] 37. Longest Palindromic Substring
 
