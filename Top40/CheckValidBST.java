@@ -40,5 +40,7 @@ public class CheckValidBST {
         if((min != null && node.val <= min) || (max != null && node.val >= max)) return false;
 
         return validate(node.left, min, node.val) && validate(node.right, node.val, max);
+        // the first one : max = node.val , that is the node's value can be maximum of the parent node's value , when we go left
+        // the second one : min = node.val , that is the node's value can be minimum equal to parent node's value , when we go right
     }
 }
