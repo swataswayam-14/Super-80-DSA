@@ -40,7 +40,7 @@
 - [✅] 29. Clone Graph
 - [✅] 30. Course Schedule
 - [ ] 31. Pacific Atlantic Water Flow
-- [ ] 32. Graph Valid Tree
+- [✅] 32. Graph Valid Tree
 
 ## Heap & Priority Queue (2 Questions)
 - [✅] 33. Kth Largest Element in Array
