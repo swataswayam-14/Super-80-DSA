@@ -33,7 +33,7 @@
 - [✅] 24. Coin Change
 - [✅] 25. Longest Increasing Subsequence
 - [✅] 26. Word Break
-- [ ] 27. Unique Paths
+- [✅] 27. Unique Paths
 
 ## Graphs (5 Questions)
 - [✅] 28. Number of Islands
