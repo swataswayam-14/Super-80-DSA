@@ -14,7 +14,7 @@
 - [✅] 9. Reverse Linked List
 - [✅] 10. Merge Two Sorted Lists
 - [✅] 11. Linked List Cycle
-- [ ] 12. Remove Nth Node From End
+- [✅] 12. Remove Nth Node From End
 - [ ] 13. Add Two Numbers
 
 ## Trees & Binary Search Trees (8 Questions)
@@ -36,7 +36,7 @@
 - [ ] 27. Unique Paths
 
 ## Graphs (5 Questions)
-- [ ] 28. Number of Islands
+- [✅] 28. Number of Islands
 - [ ] 29. Clone Graph
 - [ ] 30. Course Schedule
 - [ ] 31. Pacific Atlantic Water Flow
