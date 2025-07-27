@@ -6,7 +6,7 @@
 - [✅] 3. Contains Duplicate
 - [✅] 4. Valid Anagram
 - [✅] 5. Group Anagrams
-- [ ] 6. Valid Parentheses
+- [✅] 6. Valid Parentheses
 - [✅] 7. Longest Substring Without Repeating Characters
 - [✅] 8. 3Sum
 
