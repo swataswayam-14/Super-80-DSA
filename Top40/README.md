@@ -31,7 +31,7 @@
 - [✅] 22. Climbing Stairs
 - [✅] 23. House Robber
 - [✅] 24. Coin Change
-- [ ] 25. Longest Increasing Subsequence
+- [✅] 25. Longest Increasing Subsequence
 - [ ] 26. Word Break
 - [ ] 27. Unique Paths
 
