@@ -24,7 +24,7 @@
 - [✅] 17. Binary Tree Level Order Traversal
 - [✅] 18. Validate Binary Search Tree
 - [✅] 19. Lowest Common Ancestor of BST
-- [ ] 20. Binary Tree Right Side View
+- [✅] 20. Binary Tree Right Side View
 - [ ] 21. Construct Binary Tree from Preorder and Inorder
 
 ## Dynamic Programming (6 Questions)
@@ -49,7 +49,7 @@
 ## Two Pointers & Sliding Window (3 Questions)
 - [✅] 35. Container With Most Water
 - [✅] 36. Minimum Window Substring
-- [ ] 37. Longest Palindromic Substring
+- [✅] 37. Longest Palindromic Substring
 
 ## Advanced Topics (3 Questions)
 - [ ] 38. LRU Cache
