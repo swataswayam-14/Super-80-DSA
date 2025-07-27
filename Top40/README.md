@@ -25,7 +25,7 @@
 - [✅] 18. Validate Binary Search Tree
 - [✅] 19. Lowest Common Ancestor of BST
 - [✅] 20. Binary Tree Right Side View
-- [ ] 21. Construct Binary Tree from Preorder and Inorder
+- [✅] 21. Construct Binary Tree from Preorder and Inorder
 
 ## Dynamic Programming (6 Questions)
 - [✅] 22. Climbing Stairs
