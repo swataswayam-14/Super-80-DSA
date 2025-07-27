@@ -15,7 +15,7 @@
 - [✅] 10. Merge Two Sorted Lists
 - [✅] 11. Linked List Cycle
 - [✅] 12. Remove Nth Node From End
-- [ ] 13. Add Two Numbers
+- [✅] 13. Add Two Numbers
 
 ## Trees & Binary Search Trees (8 Questions)
 - [ ] 14. Maximum Depth of Binary Tree
@@ -48,7 +48,7 @@
 
 ## Two Pointers & Sliding Window (3 Questions)
 - [✅] 35. Container With Most Water
-- [ ] 36. Minimum Window Substring
+- [✅] 36. Minimum Window Substring
 - [ ] 37. Longest Palindromic Substring
 
 ## Advanced Topics (3 Questions)
