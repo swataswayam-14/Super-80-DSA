@@ -23,7 +23,7 @@
 - [✅] 16. Invert Binary Tree
 - [✅] 17. Binary Tree Level Order Traversal
 - [✅] 18. Validate Binary Search Tree
-- [ ] 19. Lowest Common Ancestor of BST
+- [✅] 19. Lowest Common Ancestor of BST
 - [ ] 20. Binary Tree Right Side View
 - [ ] 21. Construct Binary Tree from Preorder and Inorder
 
