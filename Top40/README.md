@@ -20,7 +20,7 @@
 ## Trees & Binary Search Trees (8 Questions)
 - [✅] 14. Maximum Depth of Binary Tree
 - [✅] 15. Same Tree
-- [ ] 16. Invert Binary Tree
+- [✅] 16. Invert Binary Tree
 - [ ] 17. Binary Tree Level Order Traversal
 - [ ] 18. Validate Binary Search Tree
 - [ ] 19. Lowest Common Ancestor of BST
