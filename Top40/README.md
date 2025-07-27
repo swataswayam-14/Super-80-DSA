@@ -18,7 +18,7 @@
 - [✅] 13. Add Two Numbers
 
 ## Trees & Binary Search Trees (8 Questions)
-- [ ] 14. Maximum Depth of Binary Tree
+- [✅] 14. Maximum Depth of Binary Tree
 - [ ] 15. Same Tree
 - [ ] 16. Invert Binary Tree
 - [ ] 17. Binary Tree Level Order Traversal
