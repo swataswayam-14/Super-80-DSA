@@ -54,4 +54,4 @@
 ## Advanced Topics (3 Questions)
 - [✅] 38. LRU Cache
 - [✅] 39. Serialize and Deserialize Binary Tree
-- [ ] 40. Find Median from Data Stream
+- [✅] 40. Find Median from Data Stream
