@@ -32,7 +32,7 @@
 - [✅] 23. House Robber
 - [✅] 24. Coin Change
 - [✅] 25. Longest Increasing Subsequence
-- [ ] 26. Word Break
+- [✅] 26. Word Break
 - [ ] 27. Unique Paths
 
 ## Graphs (5 Questions)
