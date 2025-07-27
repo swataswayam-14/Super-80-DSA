@@ -38,7 +38,7 @@
 ## Graphs (5 Questions)
 - [✅] 28. Number of Islands
 - [ ] 29. Clone Graph
-- [ ] 30. Course Schedule
+- [✅] 30. Course Schedule
 - [ ] 31. Pacific Atlantic Water Flow
 - [ ] 32. Graph Valid Tree
 
@@ -53,5 +53,5 @@
 
 ## Advanced Topics (3 Questions)
 - [ ] 38. LRU Cache
-- [ ] 39. Serialize and Deserialize Binary Tree
+- [✅] 39. Serialize and Deserialize Binary Tree
 - [ ] 40. Find Median from Data Stream
