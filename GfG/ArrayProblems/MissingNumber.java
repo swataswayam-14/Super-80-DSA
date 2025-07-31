@@ -32,12 +32,12 @@ public class MissingNumber {
     }
     public static int  missingNumOptmised(int arr[]) {
         int n = arr.length;
-        int sum =(n + 1) * (n + 2) / 2;  ;
-        int arraySum = 0;
-        for(int num: arr) {
-            sum += num;
-        }
-        return sum - arraySum;
+        long expectedSum = ((long)(n + 1) * (n + 2)) / 2;
+        long actualSum = 0;
+
+        for (int num : arr) actualSum += num;
+
+        return (int)(expectedSum - actualSum);
     }
     public static void main(String[] args) {
         int arr[] = new int[]{1,2,3,5,6};
