@@ -43,7 +43,7 @@ public class ASCIIRangeSum {
                 sum += s.charAt(i);
                 i++;
             }
-            res.add(sum);
+            if(!(sum == 0))res.add(sum);
         }
         return res;
     }
