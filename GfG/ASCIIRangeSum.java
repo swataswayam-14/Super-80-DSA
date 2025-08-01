@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class ASCIIRangeSum {
@@ -61,8 +63,37 @@ public class ASCIIRangeSum {
         }
         return new int[]{first, last};
     }
+
+    //optimised approach : do one single pass through the string to collect the first and last indices for each character
+    // then for each first != last , sum the ascri values between those indices
+
+    public static ArrayList<Integer> asciiRangeOptimised(String s) {
+        Map<Character, int[]> firstAndLastPos = new HashMap<>();
+        
+        for(int i=0; i<s.length();i++) {
+            char c = s.charAt(i);
+            if(!firstAndLastPos.containsKey(c)) {
+                firstAndLastPos.put(c, new int[]{i,i});
+            } else {
+                firstAndLastPos.get(c)[1] = i; //updating last position only
+            }
+        }
+        ArrayList<Integer> res = new ArrayList<>();
+
+        for(int[] positions: firstAndLastPos.values()) {
+            int sum = 0;
+            if(positions[0] != positions[1]) {
+                for(int i = positions[0] +1 ; i<= positions[1] - 1; i++) {
+                    sum += s.charAt(i);
+                }
+                if(sum != 0) res.add(sum);
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
         String s = "abacab";
         System.out.println(asciiRange(s));
+        System.out.println(asciiRangeOptimised(s));
     }
 }
