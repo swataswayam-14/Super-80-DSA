@@ -27,6 +27,7 @@ public class CountDistinctSubStringBrute {
             System.out.println(substr);
             count++;
         }
-        System.out.println("No. of distinct substring: " + count+1);
+        count += 1;
+        System.out.println("No. of distinct substring: " + count);
     }
 }
