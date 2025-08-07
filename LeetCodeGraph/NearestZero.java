@@ -39,7 +39,6 @@ public class NearestZero {
 
         while (!q.isEmpty()) {
             int size = q.size();
-            dist++;
 
             for(int i=0;i<size;i++) {
                 int curr[] = q.poll();
@@ -48,12 +47,13 @@ public class NearestZero {
                     int newCol = curr[1] + dir[1];
 
                     if(newRow >= 0 && newCol >= 0 && newRow < m && newCol < n) {
-                        if(mat[newRow][newCol] == 0) return dist;
+                        if(mat[newRow][newCol] == 0) return dist+1;
                         q.add(new int[]{newRow, newCol});
                         visited[newRow][newCol] = true;
                     }
                 }
             }
+            dist++;
         }
         return -1;
     }
