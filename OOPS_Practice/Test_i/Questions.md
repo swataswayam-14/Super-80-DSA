@@ -80,3 +80,18 @@ Defensive copies for mutable fields
 
 Class is truly immutable
 Then explain: How is immutability related to thread-safety?
+
+
+
+7. Access Modifiers & Package Structure
+Q: Explain the 4 access modifiers in Java and the difference between protected and package-private (default).
+Then, in this package structure:
+
+```makefile
+pkg1:
+   A.java
+pkg2:
+   B.java (extends A)
+```
+
+If A has a protected method, can B call it without creating an object of A? Explain.

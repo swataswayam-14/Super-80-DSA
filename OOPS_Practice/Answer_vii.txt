@@ -1,0 +1,43 @@
+public -> anywhere -> api methods
+protected -> same package , subclass in different package using this keyword
+
+default -> only in the same package
+private -> only within the same class 
+
+
+
+pkg1:
+   A.java
+pkg2:
+   B.java (extends A)
+
+
+package pkg1;
+
+public class A {
+    protected void greet() {
+        System.out.println("Hello from A");
+    }
+}
+
+
+package pkg2;
+import pkg1.A;
+
+public class B extends A {
+    public void test() {
+        greet(); // ✅ Allowed — accessed via inheritance
+    }
+
+    public static void main(String[] args) {
+        B b = new B();
+        b.test();
+
+        // A a = new A();
+        // a.greet(); ❌ Not allowed — protected member accessed through non-subclass reference
+    }
+}
+
+
+
+Protected in different package: Access possible only through subclass context, not through a superclass object.
