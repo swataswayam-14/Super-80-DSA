@@ -69,3 +69,14 @@ if its static , then the reference function will print, reference is A , hence i
 Q: Explain 5 key differences between abstract classes and interfaces in Java.
 Then answer: Why can interfaces now have default and static methods after Java 8, and how does it solve the diamond problem?
 Give a short diamond problem code example.
+
+
+6. Encapsulation & Immutability
+Q: Write an immutable Employee class in Java, ensuring:
+
+All fields are private & final
+
+Defensive copies for mutable fields
+
+Class is truly immutable
+Then explain: How is immutability related to thread-safety?
