@@ -101,3 +101,15 @@ If A has a protected method, can B call it without creating an object of A? Expl
 8. Composition with Interfaces
 Q: Design a Payment system where CreditCardPayment and UPIPayment share common behavior via an interface.
 Show interface-based programming and explain why depending on interfaces is better than depending on concrete classes.
+
+
+9. equals(), hashCode(), toString()
+Q: Write a Java class Book with title and author.
+Override equals() and hashCode() properly.
+Explain:
+
+Why must both be overridden together?
+
+What can go wrong if hashCode() is inconsistent with equals()?
+
+Why should toString() be overridden in DTOs?
