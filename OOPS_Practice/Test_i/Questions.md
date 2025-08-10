@@ -113,3 +113,16 @@ Why must both be overridden together?
 What can go wrong if hashCode() is inconsistent with equals()?
 
 Why should toString() be overridden in DTOs?
+
+
+10. Design Question
+Q: Design a simple Library Management System using OOP concepts.
+You must:
+
+Identify classes and their relationships (inheritance, composition)
+
+Show abstraction for book borrowing
+
+Include at least one interface
+
+Avoid tight coupling
