@@ -62,3 +62,10 @@ Explain in detail method hiding vs overriding.
 
 Answer : here it will print C
 if its static , then the reference function will print, reference is A , hence it will print : A
+
+
+
+5. Abstract Class vs Interface
+Q: Explain 5 key differences between abstract classes and interfaces in Java.
+Then answer: Why can interfaces now have default and static methods after Java 8, and how does it solve the diamond problem?
+Give a short diamond problem code example.
