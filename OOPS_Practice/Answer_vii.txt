@@ -12,6 +12,9 @@ pkg2:
    B.java (extends A)
 
 
+B can call it without creating an object of A as its a subclass and greet function can be called by using the this keyword
+
+
 package pkg1;
 
 public class A {

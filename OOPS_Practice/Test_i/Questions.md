@@ -95,3 +95,9 @@ pkg2:
 ```
 
 If A has a protected method, can B call it without creating an object of A? Explain.
+
+
+
+8. Composition with Interfaces
+Q: Design a Payment system where CreditCardPayment and UPIPayment share common behavior via an interface.
+Show interface-based programming and explain why depending on interfaces is better than depending on concrete classes.
