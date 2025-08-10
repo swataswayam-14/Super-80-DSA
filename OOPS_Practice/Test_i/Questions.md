@@ -35,3 +35,30 @@ Predict the exact output and explain why that order happens, referencing object 
 3. Method Overloading vs Overriding
 Q: Give a Java example where overloading seems to behave like overriding due to autoboxing and widening conversion, but the output surprises most people.
 Explain the method resolution process at compile time vs runtime.
+
+
+4. Polymorphism & Dynamic Method Dispatch
+Q: Given:
+
+```java
+class A {
+    void show() { System.out.println("A"); }
+}
+class B extends A {
+    void show() { System.out.println("B"); }
+}
+class C extends B {
+    void show() { System.out.println("C"); }
+}
+A obj = new C();
+obj.show();
+
+```
+
+What will be printed?
+Now modify so that show() is static in all classes — what will change and why?
+Explain in detail method hiding vs overriding.
+
+
+Answer : here it will print C
+if its static , then the reference function will print, reference is A , hence it will print : A
