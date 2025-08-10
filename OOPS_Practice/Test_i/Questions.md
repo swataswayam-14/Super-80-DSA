@@ -28,3 +28,10 @@ public class Test {
 ```
 
 Predict the exact output and explain why that order happens, referencing object construction sequence and variable shadowing.
+
+
+
+
+3. Method Overloading vs Overriding
+Q: Give a Java example where overloading seems to behave like overriding due to autoboxing and widening conversion, but the output surprises most people.
+Explain the method resolution process at compile time vs runtime.
