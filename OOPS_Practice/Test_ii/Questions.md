@@ -34,3 +34,14 @@ Anonymous inner class
 
 Show a Java example where an anonymous inner class is used to override a method on the fly.
 
+3. Final Keyword Deep Dive
+Q: Explain how final behaves differently when applied to:
+
+Variables
+
+Methods
+
+Classes
+Then answer:
+
+If a reference variable is declared final, can the object it points to be modified? Give a Java example.

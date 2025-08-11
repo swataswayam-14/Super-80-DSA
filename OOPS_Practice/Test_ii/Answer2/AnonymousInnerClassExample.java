@@ -1,3 +1,4 @@
+package Test_ii.Answer2;
 //e commerce example
 
 interface Payment{
