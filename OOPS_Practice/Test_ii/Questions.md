@@ -77,3 +77,33 @@ Shallow copy vs deep copy
 
 How Cloneable works in Java
 Write a Java example showing how shallow copy can cause bugs, and how to fix it with deep copy.
+
+
+7. Static Initialization Blocks
+Q: Explain the order of execution for:
+
+Static blocks
+
+Instance initialization blocks
+
+Constructors
+Given:
+
+```java
+class A {
+    static { System.out.println("Static A"); }
+    { System.out.println("Instance A"); }
+    A() { System.out.println("Constructor A"); }
+}
+class B extends A {
+    static { System.out.println("Static B"); }
+    { System.out.println("Instance B"); }
+    B() { System.out.println("Constructor B"); }
+}
+public class Test {
+    public static void main(String[] args) {
+        new B();
+    }
+}
+```
+Predict the output and explain why.
