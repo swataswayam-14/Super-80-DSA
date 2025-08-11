@@ -19,3 +19,18 @@ Explain:
 Why can static methods not access instance variables directly?
 
 Why can instance methods access static members without issue?
+
+
+2. Inner Classes
+Q: What are the differences between:
+
+Member inner class
+
+Static nested class
+
+Local inner class
+
+Anonymous inner class
+
+Show a Java example where an anonymous inner class is used to override a method on the fly.
+
