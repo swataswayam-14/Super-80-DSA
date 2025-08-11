@@ -45,3 +45,19 @@ Classes
 Then answer:
 
 If a reference variable is declared final, can the object it points to be modified? Give a Java example.
+
+
+4. Multiple Inheritance & Interfaces
+
+```java
+interface X {
+    default void show() { System.out.println("X"); }
+}
+interface Y {
+    default void show() { System.out.println("Y"); }
+}
+class Z implements X, Y {
+    // How to resolve?
+}
+```
+How do you resolve this default method conflict? Why does Java not allow multiple inheritance with classes but allows it with interfaces?
