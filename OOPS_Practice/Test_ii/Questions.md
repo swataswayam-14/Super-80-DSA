@@ -68,3 +68,12 @@ How do you resolve this default method conflict? Why does Java not allow multipl
 5. Covariant Return Types
 Q: What are covariant return types in Java?
 Show an example where overriding a method changes the return type to a more specific type, and explain why it is legal.
+
+
+6. Object Cloning
+Q: Explain:
+
+Shallow copy vs deep copy
+
+How Cloneable works in Java
+Write a Java example showing how shallow copy can cause bugs, and how to fix it with deep copy.
