@@ -61,3 +61,10 @@ class Z implements X, Y {
 }
 ```
 How do you resolve this default method conflict? Why does Java not allow multiple inheritance with classes but allows it with interfaces?
+
+
+
+
+5. Covariant Return Types
+Q: What are covariant return types in Java?
+Show an example where overriding a method changes the return type to a more specific type, and explain why it is legal.
