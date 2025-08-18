@@ -5,7 +5,7 @@ public class IsBiPartite {
         color[node] = col;
         for(int it: adj.get(node)) {
             if(color[it] == -1) {
-                if(dfs(it, 0, color, adj) == false) return false;
+                if(dfs(it, 1-col, color, adj) == false) return false;
             }
             else if(color[it] == col) return false;
         }
