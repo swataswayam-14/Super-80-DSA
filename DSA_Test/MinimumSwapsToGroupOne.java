@@ -1,3 +1,5 @@
+package DSA_Test;
+
 public class MinimumSwapsToGroupOne {
     /*
      Minimum Swaps to Group All 1s Together

@@ -1,3 +1,5 @@
+package DSA_Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
